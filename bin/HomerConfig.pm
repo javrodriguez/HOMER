@@ -11,7 +11,7 @@ sub loadConfigFile {
 
 	my ($file) = @_;
 	if (!defined($file)) {
-		$file = $homeDir . "/config.txt";
+		$file = $ENV{'HOMER_DATA'} . "/config.txt";
 	}
 	my %a = ();
 	my %b = ();
@@ -31,7 +31,7 @@ sub loadConfigFile {
 sub printConfigFile {
 	my ($config,$outFile, $updateFlag) = @_;
 
-	my $file = $homeDir . "/config.txt";
+	my $file = $ENV{'HOMER_DATA'} . "/config.txt";
 	if (defined($outFile)) {
 		$file = $outFile;
 		#print STDERR "\tPrinting Configuration to $outFile (may not be standard...)\n";
@@ -356,7 +356,7 @@ sub checkMSet {
 	my ($mset, $org) = @_;
 	if ($mset eq 'auto' && $org ne '' && $org ne 'null') {
 		my %table = ();
-		open ORGTABLE, "$homeDir/data/knownTFs/organism.table.txt" or die "Where is the file?\n";
+		open ORGTABLE, $ENV{'HOMER_DATA'} . "/data/knownTFs/organism.table.txt" or die "Where is the file?\n";
 		while (<ORGTABLE>) {
 			next if (/^#/);
 			chomp;
@@ -375,14 +375,14 @@ sub checkMSet {
 	} elsif ($mset eq 'auto') {
 		$mset='all';
 	}
-	my $msetDir = $homeDir . "/data/knownTFs/$mset/";
+	my $msetDir = $ENV{'HOMER_DATA'} . "/data/knownTFs/$mset/";
 	my $allMotifsFile = $msetDir . "all.motifs";
 	my $knownMotifsFile = $msetDir . "known.motifs";
 	unless (-e $allMotifsFile) {
 		print STDERR "\tWarning, couldn't find $allMotifsFile for mset: \"$mset\"\n";
 		print STDERR "\t\tUsing all motifs...\n";
 		$mset = 'all';
-		$msetDir = $homeDir . "/data/knownTFs/$mset/";
+		$msetDir = $ENV{'HOMER_DATA'} . "/data/knownTFs/$mset/";
 		$allMotifsFile = $msetDir . "all.motifs";
 		$knownMotifsFile = $msetDir . "known.motifs";
 	}

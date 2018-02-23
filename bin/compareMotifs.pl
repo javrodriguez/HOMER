@@ -11,8 +11,8 @@ use Statistics;
 
 use HomerSVGLogo;
 
-my $motifDir = $homeDir . "/data/knownTFs/";
-my $chuckFacts = $homeDir . "/data/misc/ChuckFacts.tsv";
+my $motifDir = "$ENV{'HOMER_DATA'}/data/knownTFs/";
+my $chuckFacts = "$ENV{'HOMER_DATA'}/data/misc/ChuckFacts.tsv";
 
 my $fpThresh = 1e-12;
 $TopN = 10;

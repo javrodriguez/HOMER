@@ -51,7 +51,7 @@ close OUT;
 
 `sort -k1,1 -k2,2n $tmpfile2 > $tmpfile`;
 
-my $gdir = "$homeDir" . "/data/genomes/$genome/";
+my $gdir = $ENV{'HOMER_DATA'} . "/data/genomes/$genome/";
 `homerTools extract stats "$gdir" > $tmpfile2`;
 
 open IN, $tmpfile2;

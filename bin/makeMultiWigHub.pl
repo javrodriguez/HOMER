@@ -151,7 +151,7 @@ if ($wwwDir eq '') {
 }
 
 my $customGenomeFlag = 0;
-if (-d $homeDir . "/data/genomes/$genome/") {
+if (-d $ENV{'HOMER_DATA'} . "/data/genomes/$genome/") {
 } elsif (-f $genome) {
 	$customGenomeFlag = 1;
 	print STDERR "Using custom genome (i.e. fasta file)\n";
@@ -162,7 +162,7 @@ my $rand = sprintf("%d",rand()*1e7);
 my $tmpFile = $rand . ".tmp";
 
 if ($chromSizeFile eq '') {
-    $chromSizeFile = $homeDir . "/data/genomes/$genome/chrom.sizes";
+    $chromSizeFile = $ENV{'HOMER_DATA'} . "/data/genomes/$genome/chrom.sizes";
 	if ($customGenomeFlag) {
 		$chromSizeFile = "$genome.chrom.sizes";
 	}
@@ -174,7 +174,7 @@ if ($chromSizeFile eq '') {
 			#print STDERR "`homerTools extract stats \"$genome\" > $tmpFile`;\n";
 			`homerTools extract stats \"$genome\" > "$tmpFile"`;
 		} else {
-			`homerTools extract stats \"$homeDir/data/genomes/$genome/\" > "$tmpFile"`;
+			`homerTools extract stats \"$ENV{'HOMER_DATA'}/data/genomes/$genome/\" > "$tmpFile"`;
 		}
 		open IN, $tmpFile;
 		open OUT, ">$chromSizeFile";

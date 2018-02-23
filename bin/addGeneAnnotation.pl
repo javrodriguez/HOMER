@@ -55,9 +55,9 @@ my $tmpfile2 = $rand . ".2.tmp";
 
 `convertIDs.pl "$file" $organism gene $header yes $keep > $tmpfile`;
 if ($header eq 'yes') {
-	`addDataHeader.pl $tmpfile "$homeDir/data/accession/$organism.description" > $tmpfile2`;
+	`addDataHeader.pl $tmpfile "$ENV{'HOMER_DATA'}/data/accession/$organism.description" > $tmpfile2`;
 } else {
-	`addData.pl $tmpfile "$homeDir/data/accession/$organism.description" > $tmpfile2`;
+	`addData.pl $tmpfile "$ENV{'HOMER_DATA'}/data/accession/$organism.description" > $tmpfile2`;
 }
 
 open IN, $tmpfile2;

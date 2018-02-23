@@ -4,7 +4,7 @@ use lib "/gpfs/data01/cbenner/software/homer/.//bin";
 my $homeDir = "/gpfs/data01/cbenner/software/homer/./";
 
 my $promoterSeqOffset = -2000;
-my $accDir = $homeDir . "/data/accession/";
+my $accDir = "$ENV{'HOMER_DATA'}/data/accession/";
 
 if (@ARGV < 3) {
 	print STDERR "\n\tUsage: convertIDs.pl <input file> <organism> <ID-type> [header] [keep original] [keep all]\n";

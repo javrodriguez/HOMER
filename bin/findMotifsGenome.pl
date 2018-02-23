@@ -265,8 +265,8 @@ sub parseCMDLine {
 			$cmd->{'noknown'} = 1; 
 			$cmd->{'rnaMode'} = 1; 
 			$cmd->{'norevopp'} = 1; 
-			$cmd->{'mknown'} = $homeDir . "/data/knownTFs/known.rna.motifs";
-			$cmd->{'mcheck'} = $homeDir . "/data/knownTFs/all.rna.motifs";
+			$cmd->{'mknown'} = $ENV{'HOMER_DATA'} . "/knownTFs/known.rna.motifs";
+			$cmd->{'mcheck'} = $ENV{'HOMER_DATA'} . "/knownTFs/all.rna.motifs";
 			print STDERR "\tOperating in RNA mode\n";
 		} elsif ($ARGV[$i] eq '-reuse' ) {
 			$cmd->{'reuse'} = 1; 

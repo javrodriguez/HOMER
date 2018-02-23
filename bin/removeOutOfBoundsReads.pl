@@ -69,12 +69,12 @@ my $rand = sprintf("%d",rand()*1e7);
 my $tmpFile = $rand . ".tmp";
 
 if ($chromSizeFile eq '') {
-	$chromSizeFile = $homeDir . "/data/genomes/$genome/chrom.sizes";
+	$chromSizeFile = $ENV{'HOMER_DATA'} . "/data/genomes/$genome/chrom.sizes";
 	if (-e $chromSizeFile && $forceCalc == 0) {
 	} else {
 		print STDERR "\t!! Could not find chromosome size file ($chromSizeFile)\n";
 		print STDERR "\t   Generating one from genome sequence files...\n";
-		`homerTools extract stats \"$homeDir/data/genomes/$genome/\" > "$tmpFile"`;
+		`homerTools extract stats \"$ENV{'HOMER_DATA'}/data/genomes/$genome/\" > "$tmpFile"`;
 		open IN, $tmpFile;
 		open OUT, ">$chromSizeFile";
 		while (<IN>) {

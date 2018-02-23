@@ -4,11 +4,11 @@ use lib "/gpfs/data01/cbenner/software/homer/.//bin";
 my $homeDir = "/gpfs/data01/cbenner/software/homer/./";
 
 
-my $homologeneFile = $homeDir . "/data/accession/homologene.data";
-my $taxFile = $homeDir . "/data/accession/taxids.tsv";
+my $homologeneFile = "$ENV{'HOMER_DATA'}/data/accession/homologene.data";
+my $taxFile = "$ENV{'HOMER_DATA'}/data/accession/taxids.tsv";
 
 my %taxid = ();
-open IN, $taxFile or die "!! Could not find the taxonomy ID file in $homeDir/data/accession/taxid.tsv\nMight need to update the software\n";
+open IN, $taxFile or die "!! Could not find the taxonomy ID file in $ENV{'HOMER_DATA'}/data/accession/taxid.tsv\nMight need to update the software\n";
 while (<IN>) {
 	chomp;
 	s/\r//g;

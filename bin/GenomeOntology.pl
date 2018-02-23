@@ -34,7 +34,7 @@ sub cmdLineOptions {
 	print STDERR "\n\tUsage: GenomeOntology.pl <peak file/Tag Directory> <genome> <Output Directory> [additional options]\n";
 	print STDERR "\n\tThis produces an HTML page and additional data files in the <Output Directory>.  \n";
 	print STDERR "\tTo customize this analysis, place additional peak/annotation files in the directory:\n";
-	print STDERR "\t\t$homeDir/data/genomes/\"GENOME\"/annotations/custom/\n";
+	print STDERR "\t\t$ENV{'HOMER_DATA'}/data/genomes/\"GENOME\"/annotations/custom/\n";
 
 	print STDERR "\n\tPossible Genomes:\n";
 	foreach(keys %{$config->{'GENOMES'}}) {

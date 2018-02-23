@@ -744,7 +744,7 @@ sub addGeneAnnotation {
 		return;
 	}
 
-	my $convFile = $homeDir . "/data/accession/$organism" . "2gene.tsv";
+	my $convFile = "$ENV{'HOMER_DATA'}/data/accession/$organism" . "2gene.tsv";
 	unless (-f $convFile) {
 		return;
 	}

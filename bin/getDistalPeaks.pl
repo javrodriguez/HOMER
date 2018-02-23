@@ -47,7 +47,7 @@ for (my $i=2;$i<@ARGV;$i++) {
 	} elsif ($ARGV[$i] eq '-d') {
 		$distance = $ARGV[++$i];
 	} elsif ($ARGV[$i] eq '-noTTS') {
-		$ttsFlag  = " -pdist -p \"$homeDir/data/genomes/$genome/$genome.tts\" ";
+		$ttsFlag  = " -pdist -p \"$ENV{'HOMER_DATA'}/data/genomes/$genome/$genome.tts\" ";
 	} elsif ($ARGV[$i] eq '-targets') {
 		$targetFlag = 1;
 	} else {

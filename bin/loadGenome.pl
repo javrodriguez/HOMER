@@ -22,7 +22,7 @@ my $homeDir = "/gpfs/data01/cbenner/software/homer/./";
 use POSIX;
 use HomerConfig;
 
-my $defaultdirectory = $homeDir . "/data/genomes/";
+my $defaultdirectory = $ENV{'HOMER_DATA'} . "/data/genomes/";
 my $config = HomerConfig::loadConfigFile();
 
 sub printCMD {

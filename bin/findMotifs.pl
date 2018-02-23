@@ -24,8 +24,8 @@ use HomerConfig;
 use Statistics;
 
 #default options...
-my $accDir = $homeDir . "/data/accession/";
-my $seqDir = $homeDir . "/data/promoters/";
+my $accDir = $ENV{'HOMER_DATA'} . "/data/accession/";
+my $seqDir = $ENV{'HOMER_DATA'} . "/data/promoters/";
 my $reduceThresh = 0.6;
 my $matchThresh = "T10";
 my $knownPvalueThresh = 0.01;
@@ -265,8 +265,8 @@ sub parseCMDLine {
 			$cmd->{'rnaMode'} = 1;
 			$cmd->{'norevopp'} = 1;
 			$cmd->{'noknown'} = 1;
-			$cmd->{'mknown'} = $homeDir . "/data/knownTFs/known.rna.motifs";
-			$cmd->{'mcheck'} = $homeDir . "/data/knownTFs/all.rna.motifs";
+			$cmd->{'mknown'} = $ENV{'HOMER_DATA'} . "/data/knownTFs/known.rna.motifs";
+			$cmd->{'mcheck'} = $ENV{'HOMER_DATA'} . "/data/knownTFs/all.rna.motifs";
 		} elsif ($ARGV[$i] eq '-opt') {
 			my $bail = 0;
 			print STDERR "\tWill optimize motifs in the following files:\n";

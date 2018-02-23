@@ -20,7 +20,7 @@ my $homeDir = "/gpfs/data01/cbenner/software/homer/./";
 use POSIX;
 use HomerConfig;
 
-my $defaultdirectory = $homeDir . "/data/promoters/";
+my $defaultdirectory = $ENV{'HOMER_DATA'} . "/data/promoters/";
 my $defaultSize = 4000;
 my $fastaFlag = 0;
 my $defaultStart = -300;

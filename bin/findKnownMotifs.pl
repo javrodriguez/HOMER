@@ -11,7 +11,7 @@ use HomerSVGLogo;
 
 my $analysisType = "GETPVALUE";
 
-my $knownFile  = $homeDir . "/data/knownTFs/known.motifs";
+my $knownFile  = "$ENV{'HOMER_DATA'}/data/knownTFs/known.motifs";
 my $pvalueThresh = 0.01;
 my $cpus = 1;
 my $cache = 500;

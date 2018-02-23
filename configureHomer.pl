@@ -155,15 +155,15 @@ if ($getFactsFlag == 1) {
 	my $url = $baseURL . "homer.misc.v1.0.zip";
 	`wget -O homer.package.zip "$url"`;
 	print STDERR "\t\tUnzipping...\n";
-	`unzip -o -d "$homeDir" homer.package.zip`;
+	`unzip -o -d "$ENV{'HOMER_DATA'}" homer.package.zip`;
 	`rm homer.package.zip`;
 }
-my $configFile = $homeDir . "/" . "config.txt";
+my $configFile = $ENV{'HOMER_DATA'} . "/" . "config.txt";
 
 if ($listFlag || $updateFlag || $removeFlag || $installFlag) { 
 
 	my $updateURL = $baseURL . "update.txt";
-	my $updateFile = $homeDir . "/" . "update.txt";
+	my $updateFile = $ENV{'HOMER_DATA'} . "/" . "update.txt";
 	`wget -O "$updateFile" "$updateURL"`;
 	my $config = loadConfigFile($configFile);
 	updateSettings($config,\%newSettings);
@@ -242,7 +242,7 @@ if ($listFlag || $updateFlag || $removeFlag || $installFlag) {
 				print STDERR "\t\t$g\n";
 				foreach(keys %{$removeList{$g}}) {
 					my $pkg = $_;
-					my $loc = $homeDir . $config->{$g}->{$pkg}->{'location'};
+					my $loc = $ENV{'HOMER_DATA'} . $config->{$g}->{$pkg}->{'location'};
 					my $cmd = "";
 					if ($g eq 'ORGANISMS') {
 						$cmd = "rm \"$loc/$_\"* \"$loc/../GO/$_.\"*";
@@ -267,7 +267,7 @@ if ($listFlag || $updateFlag || $removeFlag || $installFlag) {
 				my $g = $_;
 				foreach(keys %{$removeList{$g}}) {
 					my $pkg = $_;
-					my $loc = $homeDir . $config->{$g}->{$pkg}->{'location'};
+					my $loc = $ENV{'HOMER_DIR'} . $config->{$g}->{$pkg}->{'location'};
 					my $cmd = "";
 					if ($g eq 'ORGANISMS') {
 						$cmd = "rm \"$loc/$_\"* \"$loc/../GO/$_.\"*";
@@ -285,7 +285,7 @@ if ($listFlag || $updateFlag || $removeFlag || $installFlag) {
 				}
 			}
 		}
-		printConfigFile($config, $homeDir . "/config.txt");
+		printConfigFile($config, $ENV{'HOMER_DATA'} . "/config.txt");
 	}
 
 
@@ -353,7 +353,7 @@ if ($listFlag || $updateFlag || $removeFlag || $installFlag) {
 	}
 
 	if ($installFlag) {
-		updateConfigureScript($baseURL . "configureHomer.pl", $0 , $updateScriptFlag, @ARGV);
+		#updateConfigureScript($baseURL . "configureHomer.pl", $0 , $updateScriptFlag, @ARGV);
 
 		my @depCheck = ("PROMOTERS","GENOMES");
 		foreach(@depCheck) {
@@ -400,22 +400,22 @@ if ($listFlag || $updateFlag || $removeFlag || $installFlag) {
 				print STDERR "\t\tDownloading...\n";
 				`wget -O homer.package.zip "$url"`;
 				print STDERR "\t\tUnzipping...\n";
-				`unzip -o -d "$homeDir" homer.package.zip`;
+				`unzip -o -d "$ENV{'HOMER_DATA'}" homer.package.zip`;
 				`rm homer.package.zip`;
 				$config->{$mode}->{$package} = $update->{$mode}->{$package};
 				print STDERR "\t\tFinished Installing $package\n\n";
 			}
 		}
 		if (exists($install{'homer'}) || $installList{'SOFTWARE'}->{'homer'}) {
-			compileSoftware();
+			#compileSoftware();
 		}
-		printConfigFile($config, $homeDir . "/config.txt");
+		printConfigFile($config, $ENV{'HOMER_DATA'}  . "/config.txt");
 	}
 } elsif (scalar(keys %newSettings) > 0) {
 
 	my $config = loadConfigFile($configFile);
 	updateSettings($config,\%newSettings);
-	printConfigFile($config, $homeDir . "/config.txt");
+	printConfigFile($config, $ENV{'HOMER_DATA'} . "/config.txt");
 
 }
 exit;

@@ -21,7 +21,7 @@ my $homeDir = "/gpfs/data01/cbenner/software/homer/./";
 use POSIX;
 use HomerConfig;
 
-my $knownMotifs = $homeDir . "/data/knownTFs/JASPAR.matrix";
+my $knownMotifs = "$ENV{'HOMER_DATA'}/data/knownTFs/JASPAR.matrix";
 
 my $config = HomerConfig::loadConfigFile();
 $outputFileName = "tagFreq.txt";

@@ -4,10 +4,10 @@ use lib "/gpfs/data01/cbenner/software/homer/.//bin";
 my $homeDir = "/gpfs/data01/cbenner/software/homer/./";
 my $promoterSeqOffset = -2000;
 
-my $goDir = $homeDir . "/data/GO/";
-my $goFile = $homeDir . "/data/GO/GO.txt";
-my $promoterDir = $homeDir . "/data/promoters/";
-my $accDir = $homeDir . "/data/accession/";
+my $goDir = "$ENV{'HOMER_DATA'}/data/GO/";
+my $goFile = "$ENV{'HOMER_DATA'}/data/GO/GO.txt";
+my $promoterDir = "$ENV{'HOMER_DATA'}/data/promoters/";
+my $accDir = "$ENV{'HOMER_DATA'}/data/accession/";
 my $pvalueThresh = 0.05;
 
 

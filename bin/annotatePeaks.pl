@@ -3673,7 +3673,7 @@ foreach(@allDirs) {
 
 
 my %ug2gene = ();
-my $convFile = $homeDir . "/data/accession/$organism" . "2gene.tsv";
+my $convFile = "$ENV{'HOMER_DATA'}/data/accession/$organism" . "2gene.tsv";
 my @geneData = ();
 my @geneDataHeader = (); 
 my %acc2gene = ();
@@ -3692,7 +3692,7 @@ if ($noGeneFlag == 0 && $organism ne 'unknown') {
 	}
 	close IN;
 
-	my $descriptionFile = $homeDir . "/data/accession/$organism.description";
+	my $descriptionFile = "$ENV{'HOMER_DATA'}/data/accession/$organism.description";
 	open IN, $descriptionFile;
 	while (<IN>) {
 		chomp;

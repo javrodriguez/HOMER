@@ -30,7 +30,7 @@ if (@ARGV < 1) {
 sub cmdLineOptions {
 	print STDERR "\n\tProgram preparse the genome for use with motif finding.\n";
 	print STDERR "\n\tUsage: preparseGenome.pl <genome> -size <#> [additional options]\n";
-	print STDERR "\tOutput files will be placed in $homeDir/data/genomes/[genome]/preparsed/\n";
+	print STDERR "\tOutput files will be placed in $ENV{'HOMER_DATA'}/data/genomes/[genome]/preparsed/\n";
 	print STDERR "\t\t*.###.seq *.###.pos *.###.cgfreq *.###.cgbins *.###.gcbins\n";
 	print STDERR "\tFirst argument must be <genome>\n";
 
