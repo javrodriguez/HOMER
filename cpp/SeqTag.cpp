@@ -1,6 +1,8 @@
 #include "SeqTag.h"
+#include <cstdlib>
 //Hard code homer install directory...
-const char* HomerConfig::homeDirectory = "/gpfs/data01/cbenner/software/homer/./";
+//const char* HomerConfig::homeDirectory = "/gpfs/data01/cbenner/software/homer/./";
+const char* HomerConfig::homeDirectory = std::getenv("HOMER_DATA");
 
 // Copyright 2009 - 2014 Christopher Benner <cbenner@salk.edu>
 // 
