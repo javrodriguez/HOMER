@@ -87,3 +87,4 @@ SeqTag.o : SeqTag.cpp SeqTag.h
 clean:
 	rm -f *.o;
 	rm -f getMappableRegions makeTagDirectory findPeaks mergePeaks genomeOntology getPeakTags makeUCSCfile getDifferentialPeaks assignGenomeAnnotation homerTools homer homer2 analyzeHiC getGenomeTilingPeaks;
+	rm -f ../bin/getMappableRegions ../bin/makeTagDirectory ../bin/findPeaks ../bin/mergePeaks ../bin/genomeOntology ../bin/getPeakTags ../bin/makeUCSCfile ../bin/getDifferentialPeaks ../bin/assignGenomeAnnotation ../bin/homerTools ../bin/homer ../bin/homer2 ../bin/analyzeHiC ../bin/getGenomeTilingPeaks;
