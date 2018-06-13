@@ -1,7 +1,5 @@
 #!/usr/bin/env perl
 use warnings;
-use lib "/genomics/homer/.//bin";
-my $homeDir = "/genomics/homer/./";
 
 # Copyright 2009-2014 Christopher Benner <cbenner@salk.edu>
 # 

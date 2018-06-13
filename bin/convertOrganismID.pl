@@ -1,8 +1,5 @@
 #!/usr/bin/env perl
 use warnings;
-use lib "/gpfs/data01/cbenner/software/homer/.//bin";
-my $homeDir = "/gpfs/data01/cbenner/software/homer/./";
-
 
 my $homologeneFile = "$ENV{'HOMER_DATA'}/data/accession/homologene.data";
 my $taxFile = "$ENV{'HOMER_DATA'}/data/accession/taxids.tsv";

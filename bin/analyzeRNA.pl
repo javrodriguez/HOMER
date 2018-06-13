@@ -1,7 +1,5 @@
 #!/usr/bin/env perl
 use warnings;
-use lib "/gpfs/data01/cbenner/software/homer/.//bin";
-my $homeDir = "/gpfs/data01/cbenner/software/homer/./";
 
 
 # Copyright 2009, 2010, 2011, 2012 Christopher Benner <cbenner@ucsd.edu>
@@ -775,7 +773,7 @@ sub addGeneAnnotation {
 	}
 	close IN;
 
-	my $descriptionFile = $homeDir . "/data/accession/$organism.description";
+	my $descriptionFile = $ENV{'HOMER_DATA'} . "/data/accession/$organism.description";
 	open IN, $descriptionFile;
 	my %desc = ();
 	while (<IN>) {

@@ -1,8 +1,5 @@
 #!/usr/bin/env perl
 use warnings;
-use lib "/gpfs/data01/cbenner/software/homer/.//bin";
-my $homeDir = "/gpfs/data01/cbenner/software/homer/./";
-
 
 # Copyright 2009-2014 Christopher Benner <cbenner@ucsd.edu>
 # 

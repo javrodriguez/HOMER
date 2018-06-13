@@ -1,7 +1,6 @@
 #!/usr/bin/env perl
 use warnings;
 
-my $homeDir = "/bioinformatics/homer";
 
 
 use POSIX;
