@@ -86,7 +86,7 @@ sub printConfigFile {
 	close CONFIG;
 }
 sub parseConfigFile {
-	my ($file, $config,$ENV{'HOMER_DATA'}) = @_;
+	my ($file, $config, $homeDir) = @_;
 	my $mode = '';	
 	open IN, $file or die "Could not open configuration file ($file)\n";
 	while (<IN>) {
