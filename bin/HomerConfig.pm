@@ -1,7 +1,5 @@
 #!/usr/bin/env perl
 use warnings;
-use lib "/gpfs/data01/cbenner/software/homer/.//bin";
-my $homeDir = "/gpfs/data01/cbenner/software/homer/./";
 
 package HomerConfig;
 
@@ -20,7 +18,7 @@ sub loadConfigFile {
 	my %e = ();
 	my $config = {PROMOTERS=>\%a, GENOMES=>\%b, ORGANISMS=>\%c,SETTINGS=>\%d,SOFTWARE=>\%e};
 
-	parseConfigFile($file,$config,$homeDir);
+	parseConfigFile($file,$config,$ENV{'HOMER_DATA'});
 
 	my $localConfig = $ENV{"HOME"} . "/.homerConfig.txt";
 	if (-e $localConfig) {
@@ -88,7 +86,7 @@ sub printConfigFile {
 	close CONFIG;
 }
 sub parseConfigFile {
-	my ($file, $config,$homeDir) = @_;
+	my ($file, $config,$ENV{'HOMER_DATA'}) = @_;
 	my $mode = '';	
 	open IN, $file or die "Could not open configuration file ($file)\n";
 	while (<IN>) {
@@ -135,7 +133,7 @@ sub parseConfigFile {
 			if (@line > 5) {
 				@params = split /\,/, $line[5];
 			}
-			my $d = $homeDir . "/" . $location;
+			my $d = $ENV{'HOMER_DATA'} . "/" . $location;
 			if ($mode eq 'GENOMES') {
 				$config->{'GENOMES'}->{$package} = {org=>$params[0],promoters=>$params[1], directory=>$d,
 							location=>$location, version=>$version,url=>$url,desc=>$description, parameters=>\@params};
@@ -329,9 +327,9 @@ sub parseCustomGenome {
 		$genomeParseDir .= "/preparsed/";
 		print STDERR "\tUsing Custom Genome\n";
 	} else {
-		print STDERR "\n!!!!Genome $genome not found in $homeDir/config.txt\n\n";
-		print STDERR "\tTo check if is available, run \"perl $homeDir/configureHomer.pl -list\"\n";
-		print STDERR "\tIf so, add it by typing \"perl $homeDir/configureHomer.pl -install $genome\"\n";
+		print STDERR "\n!!!!Genome $genome not found in $ENV{'HOMER_DATA'}/config.txt\n\n";
+		print STDERR "\tTo check if is available, run \"configureHomer.pl -list\"\n";
+		print STDERR "\tIf so, add it by typing \"configureHomer.pl -install $genome\"\n";
 		print STDERR "\n";
 		exit;
 	}
